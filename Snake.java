@@ -19,7 +19,14 @@ public class Snake{
     public void grow(){
     }
 
-    public void move(){
+    public void move(){ // animation part needed
+			//
+	Point head = body.get(0);
+	for (int i = body.size() - 1; i > 0; i--){
+	    body.set(i, body.get(i - 1));
+	}
+	body.set(0, new Point(head.x + heading[0], head.y + heading[1]));
+
     }
     
     public boolean isDead(){

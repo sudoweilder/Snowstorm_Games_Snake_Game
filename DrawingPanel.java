@@ -6,7 +6,7 @@
  * 
  * authors: Stuart Reges, University of Washington
  *          Marty Stepp
- * version: 4.07, 2022/04/07 (BJP 5th edition)
+ * version: 4.08, 2025/02/07 (BJP 5th edition)
  * (make sure to also update version string in Javadoc header below!)
  * =====================================================================
  *
@@ -128,7 +128,7 @@ import javax.swing.filechooser.FileFilter;
  * Authors: Stuart Reges (University of Washington) and Marty Stepp.
  *
  * <p>
- * Version: 4.07, 2022/04/07 (to accompany BJP 5th edition).
+ * Version: 4.08, 2025/02/07 (to accompany BJP 5th edition).
  * 
  * <p>
  * You can always download the latest {@code DrawingPanel} from
@@ -252,8 +252,13 @@ import javax.swing.filechooser.FileFilter;
  * 
  * <h3>History and recent changes:</h3>
  * 
+ * 2025/02/07
+ * - Minor update to fix a bug in headless mode.
+ * <p>
+ *
  * 2022/04/07
  * - Minor update to remove a security manager-related compiler warning in JDK 17+.
+ * <p>
  *
  * 2016/07/25
  * - Added and cleaned up BJP4 features, static anti-alias settings, bug fixes.
@@ -287,7 +292,7 @@ import javax.swing.filechooser.FileFilter;
  * - grid lines
  * 
  * @author Stuart Reges (University of Washington) and Marty Stepp
- * @version 4.07, 2022/04/07 (BJP 5th edition)
+ * @version 4.08, 2025/02/07 (BJP 5th edition)
  */
 public final class DrawingPanel implements ImageObserver {
 	// class constants
@@ -300,7 +305,7 @@ public final class DrawingPanel implements ImageObserver {
 	private static final int MAX_SIZE               = 10000;   // max width/height
 	private static final int GRID_LINES_PX_GAP_DEFAULT = 10;   // default px between grid lines
 	
-	private static final String VERSION             = "4.07 (2022/04/07)";
+	private static final String VERSION             = "4.08 (2025/02/07)";
 	private static final String ABOUT_MESSAGE       = "DrawingPanel\n"
 			+ "Graphical library class to support Building Java Programs textbook\n"
 			+ "written by Stuart Reges, University of Washington\n"
@@ -487,10 +492,10 @@ public final class DrawingPanel implements ImageObserver {
 			if (prop == null) {
 				return null;
 			} else {
-				return name.equalsIgnoreCase("true")
-						|| name.equals("1")
-						|| name.equalsIgnoreCase("on")
-						|| name.equalsIgnoreCase("yes");
+				return prop.equalsIgnoreCase("true")
+						|| prop.equals("1")
+						|| prop.equalsIgnoreCase("on")
+						|| prop.equalsIgnoreCase("yes");
 			}
 		} catch (SecurityException e) {
 			if (DEBUG) System.out.println("Security exception when trying to read " + name);
