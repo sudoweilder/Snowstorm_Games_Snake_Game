@@ -1,7 +1,5 @@
 import java.awt.*;
 
-
-
 public class Game{
     public static final int panelWidth = 520; // current setup--could be changed by the user in the future. 
     

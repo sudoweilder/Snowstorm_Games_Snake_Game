@@ -4,3 +4,4 @@ public class General{
     public static int coordToPixel(int coordinate){
 	return coordinate*20;
     }
+}
