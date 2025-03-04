@@ -16,6 +16,8 @@ public class Snake {
     // Method to move the snake
     public void move() {
         Point head = body.get(0);
+        dx=toDx();
+        dy=toDy();
         int x = head.x + dx;
         int y = head.y + dy;
         Point newHead = new Point(x, y);
