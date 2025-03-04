@@ -64,4 +64,8 @@ public class Snake {
         this.dx = dx;
         this.dy = dy;
     }
+
+    public ArrayList<Point> getBody(){
+	return body;
+    }
 }
