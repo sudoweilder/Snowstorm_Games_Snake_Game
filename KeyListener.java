@@ -1,6 +1,8 @@
 import java.awt.*;
 import java.util.ArrayList;
-public class KeyListener{
+import java.swing.*;
+
+public class MyKeyListener extends KeyListener{
   private int dx=0;
   
   private int dy=0;
