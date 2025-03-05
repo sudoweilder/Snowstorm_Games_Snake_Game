@@ -2501,7 +2501,16 @@ public final class DrawingPanel implements ImageObserver {
 	private class DPKeyEventHandlerAdapter implements KeyListener {
 		private DPKeyEventHandler handler;
 		private String eventType;
+		private int dx=0;
+	        private int dy=0;
+	
+		public int toDx(){
+		    	return dx;
+		}
 		
+	    	public int toDy(){
+			return dy;
+	    	}
 		/**
 		 * Constructs a new key handler adapter.
 		 * @param handler event handler function
@@ -2516,10 +2525,30 @@ public final class DrawingPanel implements ImageObserver {
 		 * Called when a key press occurs.
 		 * @param e event that occurred
 		 */
-		@Override
-		public void keyPressed(KeyEvent e) {
-			// empty; see keyTyped
-		}
+		
+	    	public void keyPressed(KeyEvent e) {
+			int key = e.getKeyCode();
+	
+			if (key == KeyEvent.VK_LEFT) {
+			    dx = -1;
+			    dy = 0;
+			}
+		
+			if (key == KeyEvent.VK_RIGHT) {
+			    dx = 1;
+			    dy = 0;
+			}
+		
+			if (key == KeyEvent.VK_UP) {
+			    dx = 0;
+			    dy = -1;
+			}
+		
+			if (key == KeyEvent.VK_DOWN) {
+			    dx = 0;
+			    dy = 1;
+			}
+	    	}
 		
 		/**
 		 * Called when a key release occurs.
