@@ -10,6 +10,7 @@ public class Snake {
 
     public Snake() {
         body.add(new Point(0, 0));  // Add the starting point of the snake
+	grow(); grow();
     }
 
     public void getPanel(DrawingPanel panel){

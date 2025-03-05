@@ -767,7 +767,6 @@ public final class DrawingPanel implements ImageObserver {
 	 */
 	public DrawingPanel(int width, int height) {
 
-	    addKeyListener(new DPKeyEventHandlerAdapter("hello", "world"));
 
 		ensureInRange("width", width, 0, MAX_SIZE);
 		ensureInRange("height", height, 0, MAX_SIZE);

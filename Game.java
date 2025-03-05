@@ -9,6 +9,7 @@ public class Game {
 
         // Each block is 20x20 pixels; this creates a 25x25 large grid (lines not added)
         DrawingPanel panel = new DrawingPanel(panelWidth, panelWidth);
+	panel.addKeyListener(new MyKeyListener());
         panel.setBackground(Color.BLACK);
 
         SNAKE.getPanel(panel);
