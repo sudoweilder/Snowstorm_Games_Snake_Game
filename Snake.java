@@ -8,9 +8,12 @@ public class Snake {
     private int dy = 0;  // Movement in y direction
     private ArrayList<Point> body = new ArrayList<>();  // Snake body
 
-    public Snake(DrawingPanel panel) {
-        this.panel = panel;
+    public Snake() {
         body.add(new Point(0, 0));  // Add the starting point of the snake
+    }
+
+    public getPanel(DrawingPanel panel){
+	this.panel = panel;
     }
 
     // Method to move the snake

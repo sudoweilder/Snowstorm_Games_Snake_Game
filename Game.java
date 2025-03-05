@@ -2,6 +2,7 @@ import java.awt.*;
 
 public class Game {
     public static final int panelWidth = 600; // current setup--could be changed by the user in the future. 
+    public static final Snake snake = new Snake();
 
     public static void main(String[] args) {
         System.out.println();
