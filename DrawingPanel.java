@@ -766,6 +766,9 @@ public final class DrawingPanel implements ImageObserver {
 	 * @param height panel's height in pixels
 	 */
 	public DrawingPanel(int width, int height) {
+
+	    addKeyListener(new DPKeyEventHandlerAdapter("hello", "world"));
+
 		ensureInRange("width", width, 0, MAX_SIZE);
 		ensureInRange("height", height, 0, MAX_SIZE);
 		
@@ -2499,18 +2502,10 @@ public final class DrawingPanel implements ImageObserver {
 	
 	// internal class to implement DPKeyEventHandler behavior.
 	private class DPKeyEventHandlerAdapter implements KeyListener {
+	    public Snake snake = Game.SNAKE;
 		private DPKeyEventHandler handler;
 		private String eventType;
-		private int dx=0;
-	        private int dy=0;
-	
-		public int toDx(){
-		    	return dx;
-		}
 		
-	    	public int toDy(){
-			return dy;
-	    	}
 		/**
 		 * Constructs a new key handler adapter.
 		 * @param handler event handler function
@@ -2525,30 +2520,14 @@ public final class DrawingPanel implements ImageObserver {
 		 * Called when a key press occurs.
 		 * @param e event that occurred
 		 */
-		
-	    	public void keyPressed(KeyEvent e) {
+		@Override
+		public void keyPressed(KeyEvent e) {
 			int key = e.getKeyCode();
-	
-			if (key == KeyEvent.VK_LEFT) {
-			    dx = -1;
-			    dy = 0;
+
+			if (key == KeyEvent.VK_DOWN){
+			    snake.setHeading(0, 1);
 			}
-		
-			if (key == KeyEvent.VK_RIGHT) {
-			    dx = 1;
-			    dy = 0;
-			}
-		
-			if (key == KeyEvent.VK_UP) {
-			    dx = 0;
-			    dy = -1;
-			}
-		
-			if (key == KeyEvent.VK_DOWN) {
-			    dx = 0;
-			    dy = 1;
-			}
-	    	}
+		}
 		
 		/**
 		 * Called when a key release occurs.

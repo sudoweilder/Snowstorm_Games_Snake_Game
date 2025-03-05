@@ -12,15 +12,13 @@ public class Snake {
         body.add(new Point(0, 0));  // Add the starting point of the snake
     }
 
-    public getPanel(DrawingPanel panel){
+    public void getPanel(DrawingPanel panel){
 	this.panel = panel;
     }
 
     // Method to move the snake
     public void move() {
         Point head = body.get(0);
-        dx=toDx();
-        dy=toDy();
         int x = head.x + dx;
         int y = head.y + dy;
         Point newHead = new Point(x, y);

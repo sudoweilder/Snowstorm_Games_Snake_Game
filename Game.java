@@ -2,7 +2,7 @@ import java.awt.*;
 
 public class Game {
     public static final int panelWidth = 600; // current setup--could be changed by the user in the future. 
-    public static final Snake snake = new Snake();
+    public static final Snake SNAKE = new Snake();
 
     public static void main(String[] args) {
         System.out.println();
@@ -11,15 +11,15 @@ public class Game {
         DrawingPanel panel = new DrawingPanel(panelWidth, panelWidth);
         panel.setBackground(Color.BLACK);
 
-        Snake snake = new Snake(panel);
+        SNAKE.getPanel(panel);
 
         // Start the game loop
         new Thread(() -> {
             while (true) {
                 try {
                     Thread.sleep(100);  // Update every 100 milliseconds (This is the tick rate!)
-                    snake.move();
-                    if (snake.isDead()) {
+                    SNAKE.move();
+                    if (SNAKE.isDead()) {
                         Graphics g = panel.getGraphics();
                         g.setColor(Color.RED);
                         g.drawString("Game Over", panelWidth / 2 - 30, panelWidth / 2);
