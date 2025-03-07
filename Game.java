@@ -8,6 +8,7 @@ public class Game {
     public static final Snake SNAKE = new Snake();
     static Scanner console = new Scanner(System.in);
 
+    // Method for the player to choose the size of the panel
     public static void BoardSize(Scanner console) {
         System.out.print("Set board size: \nSmall: 1 \nMedium: 2 \nLarge: 3 \n(Type 1, 2, or 3): ");
         int choice = console.nextInt();
@@ -18,7 +19,7 @@ public class Game {
     }
 
     public static void main(String[] args) {
-        BoardSize(console);
+        BoardSize(console); //asks player to choose the panel size before the game starts
         System.out.println();
 
         // Each block is 20x20 pixels; this creates a 25x25 large grid (lines not added)
