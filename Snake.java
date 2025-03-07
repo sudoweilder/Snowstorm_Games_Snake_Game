@@ -57,7 +57,7 @@ public class Snake {
             }
         }
         // Check if the head is out of bounds (assuming a 500x500 game area for now atleast)
-        if (head.x < 0 || head.x >= 500 / 20 || head.y < 0 || head.y >= 500 / 20) {
+        if (head.x < 0 || head.x >= Game.panelWidth / 20 || head.y < 0 || head.y >= Game.panelWidth / 20) {
             return true;
         }
         return false;

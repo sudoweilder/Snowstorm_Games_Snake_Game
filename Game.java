@@ -3,10 +3,21 @@ import java.util.Scanner;
 
 public class Game {
 
+
+    public static int panelWidth = 500; // current setup--could be changed by the user in the future. 
+    public static final Snake SNAKE = new Snake();
+    static Scanner console = new Scanner(System.in);
+
+    public static void BoardSize(Scanner console) {
+        System.out.print("Set board size: \nSmall: 1 \nMedium: 2 \nLarge: 3 \n(Type 1, 2, or 3): ");
+        int choice = console.nextInt();
+        if (choice == 1) panelWidth = 300;
+        else if (choice == 2) panelWidth = 500;
+        else if (choice == 3) panelWidth = 700; // max size; panel doesn't fit screen well when over 700
+        else System.out.println("Invaild");
+    }
+
     public static void main(String[] args) {
-
-
-        
         BoardSize(console);
         System.out.println();
 
