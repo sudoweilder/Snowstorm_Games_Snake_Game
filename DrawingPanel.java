@@ -766,6 +766,8 @@ public final class DrawingPanel implements ImageObserver {
 	 * @param height panel's height in pixels
 	 */
 	public DrawingPanel(int width, int height) {
+
+
 		ensureInRange("width", width, 0, MAX_SIZE);
 		ensureInRange("height", height, 0, MAX_SIZE);
 		
@@ -2499,6 +2501,7 @@ public final class DrawingPanel implements ImageObserver {
 	
 	// internal class to implement DPKeyEventHandler behavior.
 	private class DPKeyEventHandlerAdapter implements KeyListener {
+	    public Snake snake = Game.SNAKE;
 		private DPKeyEventHandler handler;
 		private String eventType;
 		
@@ -2518,7 +2521,11 @@ public final class DrawingPanel implements ImageObserver {
 		 */
 		@Override
 		public void keyPressed(KeyEvent e) {
-			// empty; see keyTyped
+			int key = e.getKeyCode();
+
+			if (key == KeyEvent.VK_DOWN){
+			    snake.setHeading(0, 1);
+			}
 		}
 		
 		/**
