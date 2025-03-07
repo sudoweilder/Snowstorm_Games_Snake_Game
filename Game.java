@@ -28,7 +28,6 @@ public class Game {
         panel.setBackground(Color.BLACK);
 
         SNAKE.getPanel(panel);
-
         // Start the game loop
         new Thread(() -> {
             while (true) {
