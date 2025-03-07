@@ -1,10 +1,13 @@
 import java.awt.*;
+import java.util.Scanner;
 
 public class Game {
-    public static final int panelWidth = 600; // current setup--could be changed by the user in the future. 
-    public static final Snake SNAKE = new Snake();
 
     public static void main(String[] args) {
+
+
+        
+        BoardSize(console);
         System.out.println();
 
         // Each block is 20x20 pixels; this creates a 25x25 large grid (lines not added)
