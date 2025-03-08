@@ -34,6 +34,7 @@ public class Snake {
         int x = head.x + dx;
         int y = head.y + dy;
         body.add(0, new Point(x, y));  // Add new segment at the front
+        Menu.points++;
     }
 
     // Method to draw the snake
