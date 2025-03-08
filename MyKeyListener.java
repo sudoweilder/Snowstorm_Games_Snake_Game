@@ -5,7 +5,7 @@ import java.util.ArrayList;
 //import java.swing.*;
 
 public class MyKeyListener implements KeyListener{
-  Snake snake = Game.SNAKE;
+  Snake snake = SnakeGame.SNAKE;
 
   
   public void keyPressed(KeyEvent e) {
@@ -24,6 +24,22 @@ public class MyKeyListener implements KeyListener{
     }
     
     if (key == KeyEvent.VK_DOWN) {
+        snake.setHeading(0,1);
+    }
+    
+    if (key == KeyEvent.VK_A) {
+        snake.setHeading(-1,0);
+    }
+    
+    if (key == KeyEvent.VK_D) {
+        snake.setHeading(1, 0);
+    }
+    
+    if (key == KeyEvent.VK_W) {
+        snake.setHeading(0, -1);
+    }
+    
+    if (key == KeyEvent.VK_S) {
         snake.setHeading(0,1);
     }
   }

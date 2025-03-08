@@ -9,7 +9,7 @@ public class Snake {
     private ArrayList<Point> body = new ArrayList<>();  // Snake body
 
     public Snake() {
-        body.add(new Point(0, 0));  // Add the starting point of the snake
+        body.add(new Point(SnakeGame.panelWidth / 40, SnakeGame.panelWidth / 40));  // Add the starting point of the snake
 	grow(); grow();
     }
 
@@ -35,6 +35,7 @@ public class Snake {
         int x = head.x + 2 * dx;
         int y = head.y + 2 * dy;
         body.add(0, new Point(x, y));  // Add new segment at the front
+        Game.points++;
     }
 
     // Method to draw the snake
@@ -60,7 +61,7 @@ public class Snake {
             }
         }
         // Check if the head is out of bounds (assuming a 500x500 game area for now atleast)
-        if (head.x < 0 || head.x >= Game.panelWidth / 20 || head.y < 0 || head.y >= Game.panelWidth / 20) {
+        if (head.x < 0 || head.x >= SnakeGame.panelWidth / 20 || head.y < 0 || head.y >= SnakeGame.panelWidth / 20) {
             return true;
         }
         return false;
@@ -68,8 +69,10 @@ public class Snake {
 
     // Set the direction of the snake's movement
     public void setHeading(int dx, int dy) {
-        this.dx = dx;
-        this.dy = dy;
+	if(this.dx!=-dx || this.dy!=-dy){
+	        this.dx = dx;
+	        this.dy = dy;
+	}
     }
 
     public ArrayList<Point> getBody(){

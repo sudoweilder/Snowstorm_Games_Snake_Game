@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.Graphics.*;
 import java.util.Random;
 import java.util.ArrayList;
+import java.util.*;
 
 
 public class Apple{

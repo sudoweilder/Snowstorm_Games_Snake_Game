@@ -2501,7 +2501,6 @@ public final class DrawingPanel implements ImageObserver {
 	
 	// internal class to implement DPKeyEventHandler behavior.
 	private class DPKeyEventHandlerAdapter implements KeyListener {
-	    public Snake snake = Game.SNAKE;
 		private DPKeyEventHandler handler;
 		private String eventType;
 		
@@ -2524,7 +2523,6 @@ public final class DrawingPanel implements ImageObserver {
 			int key = e.getKeyCode();
 
 			if (key == KeyEvent.VK_DOWN){
-			    snake.setHeading(0, 1);
 			}
 		}
 		
