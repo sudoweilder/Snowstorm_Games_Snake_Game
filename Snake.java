@@ -20,26 +20,29 @@ public class Snake {
     // Method to move the snake
     public void move() {
         Point head = body.get(0);
+	Point rear = body.get(body.size() - 1);
         int x = head.x + dx;
         int y = head.y + dy;
         Point newHead = new Point(x, y);
         body.add(0, newHead);  // Add new head to the front of the body
         body.remove(body.size() - 1);  // Remove the last segment of the body
-        drawSnake();  // Draw the snake after moving
+        drawSnake(rear.x, rear.y);  // Draw the snake after moving
     }
 
     // Method to grow the snake
     public void grow() {
         Point head = body.get(0);
-        int x = head.x + dx;
-        int y = head.y + dy;
+        int x = head.x + 2 * dx;
+        int y = head.y + 2 * dy;
         body.add(0, new Point(x, y));  // Add new segment at the front
     }
 
     // Method to draw the snake
-    public void drawSnake() {
+    public void drawSnake(int backX, int backY) {
         Graphics g = panel.getGraphics();
-        panel.clear();  // Clear the panel before drawing
+        g.setColor(Color.BLACK);
+	g.fillRect(backX * 20, backY*20, 20, 20);
+	g.setColor(Color.GREEN);
         g.setColor(Color.GREEN);
 
         for (Point point : body) { 

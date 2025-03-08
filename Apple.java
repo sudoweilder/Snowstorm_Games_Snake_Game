@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.Graphics.*;
 import java.util.Random;
+import java.util.ArrayList;
 
 
 public class Apple{
@@ -23,39 +24,51 @@ public class Apple{
 
 	// This loop finds a the the snake is no on top of 
 	do{
-	    
 	    boolean pointChecked = true;
 	    do {
-		newX = random.nextInt(panelSize + 1);
-		newY = random.nextInt(panelSize + 1);
+		newX = random.nextInt(panelSize/20 + 1);
+		newY = random.nextInt(panelSize/20 + 1);
 		
 		for (Point part : body){
-		    pointChecked = (part.x = newX || part.y = newY ) && pointChecked;
+		    pointChecked = (part.x == newX || part.y == newY ) && pointChecked;
 		}
-
-	    } while (pointChecked);
+	    } while (pointChecked && pointsChecked.size() != 0);
 	
-
 
 	    for (Point part: body){
-		pointBad = ((newX = part.x) || (newY = part.y)) && pointBad;
+		pointBad = ((newX == part.x) || (newY == part.y)) && pointBad;
 	    }
 
-	    pointsChecked.add(new Point(newX, NewY));
+	    pointsChecked.add(new Point(newX, newY));
 	} while (pointBad);
-	
-	// Places Square down
-	graphics.setColor(Color.RED);
-	gracphics.fillRect(newX * 20, new Y * 20, 20, 20);
-	graphics.setColor(Color.GREEN);
 
+	x = newX;
+	y = newY;
+
+	draw();
+	
+    }
+    
+    public void draw(){
+	// Places Square down
+	System.out.println(x);
+	graphics.setColor(Color.RED);
+	graphics.fillRect(x * 20, y * 20, 20, 20);
+	graphics.setColor(Color.GREEN);
     }
 
 
+    public Point getCoord(){
+	return new Point(x, y);
+    }
 
-    public Apple(Graphics g, Snake snake, ){
+
+    public Apple(Graphics g, Snake snake, int panelSize){
 	this.graphics = g;
 	this.snake = snake;
+	this.panelSize = panelSize;
+	place();
+	
     }
 
 

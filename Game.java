@@ -27,18 +27,22 @@ public class Game {
         panel.setBackground(Color.BLACK);
 
         SNAKE.getPanel(panel);
-
+	Apple apple = new Apple(panel.getGraphics(), SNAKE, panelWidth);
         // Start the game loop
         new Thread(() -> {
             while (true) {
                 try {
                     Thread.sleep(100);  // Update every 100 milliseconds (This is the tick rate!)
                     SNAKE.move();
+		    //if (SNAKE.getBody().get(0).equals(apple.getCoord())){
+		//	    SNAKE.grow();
+		//	    apple.place();
+		  //  }
                     if (SNAKE.isDead()) {
-                        Graphics g = panel.getGraphics();
+			Graphics g = panel.getGraphics();
                         g.setColor(Color.RED);
                         g.drawString("Game Over", panelWidth / 2 - 30, panelWidth / 2);
-                        break;
+			break;
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
