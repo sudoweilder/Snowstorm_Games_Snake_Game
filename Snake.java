@@ -66,8 +66,10 @@ public class Snake {
 
     // Set the direction of the snake's movement
     public void setHeading(int dx, int dy) {
-        this.dx = dx;
-        this.dy = dy;
+	if(this.dx!=-dx || this.dy!=-dy){
+	        this.dx = dx;
+	        this.dy = dy;
+	}
     }
 
     public ArrayList<Point> getBody(){
