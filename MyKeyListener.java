@@ -26,6 +26,22 @@ public class MyKeyListener implements KeyListener{
     if (key == KeyEvent.VK_DOWN) {
         snake.setHeading(0,1);
     }
+    
+    if (key == KeyEvent.VK_A) {
+        snake.setHeading(-1,0);
+    }
+    
+    if (key == KeyEvent.VK_d) {
+        snake.setHeading(1, 0);
+    }
+    
+    if (key == KeyEvent.VK_w) {
+        snake.setHeading(0, -1);
+    }
+    
+    if (key == KeyEvent.VK_s) {
+        snake.setHeading(0,1);
+    }
   }
 
   public void keyReleased(KeyEvent e){}
