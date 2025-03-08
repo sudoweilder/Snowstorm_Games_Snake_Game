@@ -24,7 +24,7 @@ public class Score {
             }
             writer.close();
 
-        } catch (IOException e) {
+        } catch (IOException e) { // used ioexception to catch any IO errors 
             System.out.println("An error occurred");
             e.printStackTrace();
         }
@@ -44,7 +44,7 @@ public class Score {
                 }
             }
             reader.close();
-        } catch (IOException e) {
+        } catch (IOException e) { // used ioexception to catch any IO errors
             System.out.println("An error occurred");
             e.printStackTrace();
         }
@@ -59,7 +59,7 @@ public class Score {
     }
 
     public static void displayScoreboard(Scanner console) throws FileNotFoundException, InterruptedException { // displays the scoreboard when called
-        Scanner display = new Scanner(new File("scoreboard.txt"));
+        Scanner display = new Scanner(new File("scoreboard.txt")); // this will take the sorted list
         int rank = 1; // initialize rank
         while (display.hasNextLine()) { // loops through each line in the file
             String line = display.nextLine();
@@ -69,11 +69,13 @@ public class Score {
             else if (rank == 3) System.out.println(rank + "rd: " + line);
             else System.out.println(rank + "th: " + line);
 
-            rank++;
+            rank++; // increments rank
         }
         
         display.close();
-        System.out.print("---------------------------------\n"
+        // Option for the player to return to the main menu or exit the program
+        // The option to quit is also given here in case the player wants to end after they die rather than going back to the menu
+        System.out.print("---------------------------------\n" 
                         + "Type 1 to return to main menu\n"
                         + "type 2 to exit the program\n"
                         + "Type: ");
