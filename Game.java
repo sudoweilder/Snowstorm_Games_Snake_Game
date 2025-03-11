@@ -15,7 +15,7 @@ public class Game {
                             + "   1: Start Game\n"
                             + "   2: Scoreboard\n"
                             + "   3: Credits\n"
-                            + "   4: Exit Game"
+                            + "   4: Exit Game\n"
                             + "|----------------------|\n"
                             + "Type: ");
         

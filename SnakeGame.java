@@ -6,7 +6,7 @@ public class SnakeGame {
     
     public static int panelWidth = 500; // Default size of the panel (later changed when the player sets the board size)
     public static final Snake SNAKE = new Snake();
-    public static Scanner console = new Scanner(System.in);1
+    public static Scanner console = new Scanner(System.in);
 
 
     public static void gameLoop() throws InterruptedException, FileNotFoundException {
@@ -19,7 +19,6 @@ public class SnakeGame {
 
         SNAKE.getPanel(panel);
 	Apple apple = new Apple(panel.getGraphics(), SNAKE, panelWidth);
-        Thread.sleep(5000); // breif timer before the game starts (gives time to open the window)
         // Start the game loop
             while (true) {
                 try {
