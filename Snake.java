@@ -9,7 +9,7 @@ public class Snake {
     private ArrayList<Point> body = new ArrayList<>();  // Snake body
 
     public Snake() {
-        body.add(new Point(SnakeGame.panelWidth / 40, SnakeGame.panelWidth / 40));  // Add the starting point of the snake
+        body.add(new Point(0, 0));  // Add the starting point of the snake
 	grow(); grow();
     }
 
