@@ -52,7 +52,6 @@ public class Apple{
     
     public void draw(){
 	// Places Square down
-	System.out.println(x);
 	graphics.setColor(Color.RED);
 	graphics.fillRect(x * 20, y * 20, 20, 20);
 	graphics.setColor(Color.GREEN);
