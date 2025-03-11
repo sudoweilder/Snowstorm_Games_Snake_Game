@@ -18,8 +18,9 @@ public class Game {
                             + "   4: Exit Game"
                             + "|----------------------|\n"
                             + "Type: ");
-        
-        int choice = console.nextInt();
+
+	int choice = getInt(console, 1, 4);
+
         if (choice == 1) { // runs the main game loop
             askName(console); // gives the player id
             boardSize(console); // gives 3 different options of board sizes
@@ -42,15 +43,11 @@ public class Game {
                         + "2: Medium\n"
                         + "3: Large\n"
                         + "(Type 1, 2, or 3): ");
-        int choice = console.nextInt();
-        //Each block is 20x20 pixels, the comments are the block dimensions
+        int choice = getInt(console, 1, 3);
+        // Each block is 20x20 pixels, the comments are the block dimensions
         if (choice == 1) SnakeGame.panelWidth = 300; //Smallest 15x15
         else if (choice == 2) SnakeGame.panelWidth = 500; // Medium (Defult) 25x25
         else if (choice == 3) SnakeGame.panelWidth = 700; // Large 35x35
-        else { // if any number is entered but 1, 2, or 3 then it calls the method again
-            System.out.println("Invaild"); 
-            boardSize(console);
-        }
     }
     public static void credits(Scanner console) throws FileNotFoundException, InterruptedException { // Credits to ourselves (just cause)
         System.out.print("|---------------Credits-----------------|\n"
@@ -75,4 +72,25 @@ public class Game {
             id = input;
         }
     }
+    
+    // processes keyboard input
+    public static int getInt(Scanner console,int min, int max){
+	while (!console.hasNextInt()) {
+	    System.out.print("Invalid input. Please choose from the options above: ");
+	    console.next(); console.nextLine();
+	}
+
+        int choice = console.nextInt();
+
+	while(choice < min || choice > max){
+	    System.out.print("Invalid input. Please choose from the options above: ");
+	    while (!console.hasNextInt()){
+		System.out.print("Invalid input. Please choose from the options above: ");
+		console.next(); console.nextLine();
+	    }
+	    choice = console.nextInt();
+	}
+	return choice;
+    }
+
 }

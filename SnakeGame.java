@@ -19,7 +19,6 @@ public class SnakeGame {
 
         SNAKE.getPanel(panel);
 	Apple apple = new Apple(panel.getGraphics(), SNAKE, panelWidth);
-        Thread.sleep(5000); // breif timer before the game starts (gives time to open the window)
         // Start the game loop
             while (true) {
                 try {
