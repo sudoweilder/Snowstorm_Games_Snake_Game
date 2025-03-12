@@ -27,8 +27,8 @@ public class Apple{
 	do{
 	    boolean pointChecked = true;
 	    do {
-		newX = random.nextInt(panelSize/20 + 1);
-		newY = random.nextInt(panelSize/20 + 1);
+		newX = random.nextInt(panelSize/20);
+		newY = random.nextInt(panelSize/20);
 		
 		for (Point part : body){
 		    pointChecked = (part.x == newX || part.y == newY ) && pointChecked;

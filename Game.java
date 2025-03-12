@@ -1,10 +1,14 @@
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.awt.Graphics.*;
+import java.awt.*;
 
 public class Game {
 
     public static int points = 0;
     public static String id = null;
+    public static int panelWidth;
+
     public static void main(String[] args) throws FileNotFoundException, InterruptedException { // This is where the Game Starts
         Scanner console = new Scanner(System.in);
         mainMenu(console);
@@ -24,7 +28,7 @@ public class Game {
         if (choice == 1) { // runs the main game loop
             askName(console); // gives the player id
             boardSize(console); // gives 3 different options of board sizes
-            SnakeGame.gameLoop(); // runs the snake game
+            snake(new DrawingPanel(panelWidth, panelWidth)); // runs snake game
             Score.writeScoreboard(id, points); // after snake dies, writes both the id and the points to scoreboard.txt
             Score.displayScoreboard(console); // prints the scoreboard to console and then asks the player if they want to go back to the menu or exit the program
 
@@ -45,9 +49,9 @@ public class Game {
                         + "(Type 1, 2, or 3): ");
         int choice = getInt(console, 1, 3);
         // Each block is 20x20 pixels, the comments are the block dimensions
-        if (choice == 1) SnakeGame.panelWidth = 300; //Smallest 15x15
-        else if (choice == 2) SnakeGame.panelWidth = 500; // Medium (Defult) 25x25
-        else if (choice == 3) SnakeGame.panelWidth = 700; // Large 35x35
+        if (choice == 1) panelWidth = 300; //Smallest 15x15
+        else if (choice == 2) panelWidth = 500; // Medium (Defult) 25x25
+        else if (choice == 3) panelWidth = 700; // Large 35x35
     }
     public static void credits(Scanner console) throws FileNotFoundException, InterruptedException { // Credits to ourselves (just cause)
         System.out.print("|---------------Credits-----------------|\n"
@@ -93,4 +97,36 @@ public class Game {
 	return choice;
     }
 
+    // This funciotn takes a drawingpanel object to run a snake game. 
+    public static void snake(DrawingPanel panel) throws InterruptedException{
+	Snake snake = new Snake();
+	snake.getPanel(panel);
+	Apple apple = new Apple(panel.getGraphics(), snake, panelWidth);
+
+	panel.addKeyListener(new MyKeyListener(snake));
+	System.out.println("add key listener");
+        panel.setBackground(Color.BLACK);
+
+        // Start the game loop
+        while (true) {
+            try {
+                Thread.sleep(100);  // Update every 100 milliseconds (This is the tick rate!)
+		snake.processMove();
+                snake.move();
+	        apple.draw();
+	        if (snake.getBody().get(0).equals(apple.getCoord())){
+		    snake.grow();
+		    apple.place();
+	        }    
+		if (snake.isDead()) {
+		    Graphics g = panel.getGraphics();
+                    g.setColor(Color.RED);
+                    g.drawString("Game Over", panelWidth / 2 - 30, panelWidth / 2);
+		    break;
+		}
+	    } catch (InterruptedException e) {
+                e.printStackTrace();
+	    }
+	}
+    }
 }

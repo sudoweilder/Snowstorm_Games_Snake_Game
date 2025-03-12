@@ -1,5 +1,8 @@
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.awt.event.KeyEvent;
 
 public class Snake {
     private int[] heading = {0, 0};  // Direction of movement
@@ -7,6 +10,7 @@ public class Snake {
     private int dx = 1;  // Movement in x direction
     private int dy = 0;  // Movement in y direction
     private ArrayList<Point> body = new ArrayList<>();  // Snake body
+    private Queue<Integer> moves = new LinkedList<>(); // processes moves
 
     public Snake() {
         body.add(new Point(0, 0));  // Add the starting point of the snake
@@ -61,7 +65,7 @@ public class Snake {
             }
         }
         // Check if the head is out of bounds (assuming a 500x500 game area for now atleast)
-        if (head.x < 0 || head.x >= SnakeGame.panelWidth / 20 || head.y < 0 || head.y >= SnakeGame.panelWidth / 20) {
+        if (head.x < 0 || head.x >= Game.panelWidth / 20 || head.y < 0 || head.y >= Game.panelWidth / 20) {
             return true;
         }
         return false;
@@ -78,4 +82,31 @@ public class Snake {
     public ArrayList<Point> getBody(){
 	return body;
     }
+
+    public void addMoves(int key){
+	moves.add(key);
+    }
+
+    public void processMove(){
+	if (!moves.isEmpty()){
+	    int key = moves.remove();
+      
+	    if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_A) {
+		setHeading(-1,0);
+	    }
+	
+	    if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) {
+		setHeading(1, 0);
+	    }
+	
+	    if (key == KeyEvent.VK_UP || key == KeyEvent.VK_W) {
+		setHeading(0, -1);
+	    }	
+	
+	    if (key == KeyEvent.VK_DOWN || key == KeyEvent.VK_S) {
+		setHeading(0,1);
+	    }
+	}
+    }
+
 }
