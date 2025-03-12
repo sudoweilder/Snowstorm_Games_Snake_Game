@@ -122,6 +122,7 @@ public class Game {
 		    Graphics g = panel.getGraphics();
                     g.setColor(Color.RED);
                     g.drawString("Game Over", panelWidth / 2 - 30, panelWidth / 2);
+                    g.drawString("Score: " + points, panelWidth / 2 - 30, panelWidth / 2 + 20);
 		    break;
 		}
 	    } catch (InterruptedException e) {

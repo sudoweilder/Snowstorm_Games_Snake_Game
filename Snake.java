@@ -35,11 +35,10 @@ public class Snake {
 
     // Method to grow the snake
     public void grow() {
-        Point head = body.get(0);
-        int x = head.x + dx;
-        int y = head.y + dy;
-        body.add(0, new Point(x, y));  // Add new segment at the front
-        Game.points++;
+        Point lastSegment = body.get(body.size() - 1);
+        int x = lastSegment.x - dx;
+        int y = lastSegment.y - dy;
+        body.add(new Point(x, y));  // Add new segment at the back
     }
 
     // Method to draw the snake

@@ -47,7 +47,7 @@ public class Apple{
 	y = newY;
 
 	draw();
-	
+	Game.points++;
     }
     
     public void draw(){
