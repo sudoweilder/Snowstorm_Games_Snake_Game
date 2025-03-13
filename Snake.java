@@ -35,10 +35,11 @@ public class Snake {
 
     // Method to grow the snake
     public void grow() {
-        Point head = body.get(0);
-        int x = head.x + dx;
-        int y = head.y + dy;
-        body.add(0, new Point(x, y));  // Add new segment at the front
+        Point back = body.get(body.size() - 1);
+	Point secondToBack = body.get(body.size() - 2);
+        int x = back.x + (back.x - secondToBack.x);
+        int y = back.y + (back.y - secondToBack.y);
+        body.add(new Point(x, y));  // Add new segment at the front
         Game.points++;
     }
 
@@ -90,7 +91,9 @@ public class Snake {
     }
 
     public void addMoves(int key){
-	moves.add(key);
+	    if(moves.size()<=1) {
+            moves.add(key);
+        }
     }
 
     public void processMove(){
