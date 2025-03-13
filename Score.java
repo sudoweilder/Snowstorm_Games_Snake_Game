@@ -79,7 +79,7 @@ public class Score {
                         + "Type 1 to return to main menu\n"
                         + "type 2 to exit the program\n"
                         + "Type: ");
-        int choice = console.nextInt();
+        int choice = Game.getInt(console, 1, 2);
         if (choice == 1) Game.mainMenu(console);
         else if (choice == 2) System.exit(0);
         else System.out.println("Invalid");
