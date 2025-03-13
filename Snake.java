@@ -14,7 +14,7 @@ public class Snake {
 
     public Snake() {
         body.add(new Point(0, 0));  // Add the starting point of the snake
-	grow(); grow();
+	initialGrow(); initialGrow();
     }
 
     public void getPanel(DrawingPanel panel){
@@ -35,11 +35,19 @@ public class Snake {
 
     // Method to grow the snake
     public void grow() {
-        Point head = body.get(0);
-        int x = head.x + dx;
-        int y = head.y + dy;
-        body.add(0, new Point(x, y));  // Add new segment at the front
+        Point back = body.get(body.size() - 1);
+	Point secondToBack = body.get(body.size() - 2);
+        int x = back.x + (back.x - secondToBack.x);
+        int y = back.y + (back.y - secondToBack.y);
+        body.add(new Point(x, y));  // Add new segment at the front
         Game.points++;
+    }
+
+    public void initialGrow() {
+	Point head = body.get(0);
+	int x = head.x + dx;
+	int y = head.y + dy;
+	body.add(0, new Point(x, y));
     }
 
     // Method to draw the snake
@@ -48,7 +56,6 @@ public class Snake {
         g.setColor(Color.BLACK);
 	g.fillRect(backX * 20, backY*20, 20, 20);
 	g.setColor(Color.GREEN);
-        g.setColor(Color.GREEN);
 
         for (Point point : body) { 
             g.fillRect(point.x * 20, point.y * 20, 20, 20);  // Draw rectangle for each body part
