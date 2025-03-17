@@ -11,6 +11,7 @@ public class Snake {
     private int dy = 0;  // Movement in y direction
     private ArrayList<Point> body = new ArrayList<>();  // Snake body
     private Queue<Integer> moves = new LinkedList<>(); // processes moves
+    private int points = 0;
 
     public Snake() {
         body.add(new Point(0, 0));  // Add the starting point of the snake
@@ -40,7 +41,7 @@ public class Snake {
         int x = back.x + (back.x - secondToBack.x);
         int y = back.y + (back.y - secondToBack.y);
         body.add(new Point(x, y));  // Add new segment at the front
-        Game.points++;
+        points++;
     }
 
     public void initialGrow() {
@@ -88,6 +89,10 @@ public class Snake {
 
     public ArrayList<Point> getBody(){
 	return body;
+    }
+
+    public int getPoints(){
+	return points;
     }
 
     public void addMoves(int key){

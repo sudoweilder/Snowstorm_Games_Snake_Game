@@ -6,5 +6,5 @@ test 44
 Sasha 41
 asdf 39
 angela 31
-2 30
 213 29
+2 17

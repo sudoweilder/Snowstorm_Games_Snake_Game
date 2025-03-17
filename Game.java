@@ -5,7 +5,6 @@ import java.awt.*;
 
 public class Game {
 
-    public static int points = 0;
     public static String id = null;
     public static int panelWidth;
 
@@ -29,16 +28,11 @@ public class Game {
             askName(console); // gives the player id
             boardSize(console); // gives 3 different options of board sizes
             snake(new DrawingPanel(panelWidth, panelWidth)); // runs snake game
-            Score.writeScoreboard(id, points); // after snake dies, writes both the id and the points to scoreboard.txt
             Score.displayScoreboard(console); // prints the scoreboard to console and then asks the player if they want to go back to the menu or exit the program
 
             }else if (choice == 2) Score.displayScoreboard(console);
             else if (choice == 3) credits(console);
             else if (choice == 4) System.exit(0);
-            else {
-                System.out.println("Invaild Entry"); 
-                mainMenu(console);
-            }
         }
         // Method for the player to choose the size of the panel (these are fixed)
     public static void boardSize(Scanner console) { 
@@ -121,6 +115,7 @@ public class Game {
 		    Graphics g = panel.getGraphics();
                     g.setColor(Color.RED);
                     g.drawString("Game Over", panelWidth / 2 - 30, panelWidth / 2);
+		    Score.writeScoreboard(id, snake.getPoints()); // after snake dies, writes both the id and the points to scoreboard.txt
 		    break;
 		}
 	    } catch (InterruptedException e) {
