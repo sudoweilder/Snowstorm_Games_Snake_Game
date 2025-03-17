@@ -59,7 +59,7 @@ public class Score {
     }
 
     public static void displayScoreboard(Scanner console) throws FileNotFoundException, InterruptedException { // displays the scoreboard when called
-        Scanner display = new Scanner(new File("scoreboard.txt")); // this will take the sorted list
+        Scanner display = new Scanner(new File("Scoreboard.txt")); // this will take the sorted list
         int rank = 1; // initialize rank
         while (display.hasNextLine()) { // loops through each line in the file
             String line = display.nextLine();
