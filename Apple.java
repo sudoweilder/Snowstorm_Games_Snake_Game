@@ -17,8 +17,8 @@ public class Apple{
 	
 	Random random = new Random();
 	
-	int newX;
-	int newY;
+	int newX = snake.getBody().get(2).x;
+	int newY = snake.getBody().get(2).y;
 	ArrayList<Point> body = snake.getBody();
 	ArrayList<Point> pointsChecked = new ArrayList<>();
 	boolean pointBad = true;
@@ -30,8 +30,8 @@ public class Apple{
 		newX = random.nextInt(panelSize/20);
 		newY = random.nextInt(panelSize/20);
 		
-		for (Point part : body){
-		    pointChecked = (part.x == newX || part.y == newY ) && pointChecked;
+		for (Point point : pointsChecked){
+		    pointChecked = (point.x == newX || point.y == newY ) && pointChecked;
 		}
 	    } while (pointChecked && pointsChecked.size() != 0);
 	
