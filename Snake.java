@@ -96,7 +96,9 @@ public class Snake {
     }
 
     public void addMoves(int key){
-	moves.add(key);
+	    if(moves.size()<=1) {
+            moves.add(key);
+        }
     }
 
     public void processMove(){

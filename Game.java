@@ -98,6 +98,7 @@ public class Game {
 	Apple apple = new Apple(panel.getGraphics(), snake, panelWidth);
 
 	panel.addKeyListener(new MyKeyListener(snake));
+	System.out.println("add key listener");
         panel.setBackground(Color.BLACK);
 
         // Start the game loop
@@ -115,6 +116,7 @@ public class Game {
 		    Graphics g = panel.getGraphics();
                     g.setColor(Color.RED);
                     g.drawString("Game Over", panelWidth / 2 - 30, panelWidth / 2);
+                    g.drawString("Score: " + snake.getPoints(), panelWidth / 2 - 30, panelWidth / 2 + 20);
 		    Score.writeScoreboard(id, snake.getPoints()); // after snake dies, writes both the id and the points to scoreboard.txt
 		    break;
 		}

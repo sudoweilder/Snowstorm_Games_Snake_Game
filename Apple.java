@@ -47,7 +47,6 @@ public class Apple{
 	y = newY;
 
 	draw();
-	
     }
     
     public void draw(){
