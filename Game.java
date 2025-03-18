@@ -42,6 +42,7 @@ public class Game {
                         + "3: Large\n"
                         + "(Type 1, 2, or 3): ");
         int choice = getInt(console, 1, 3);
+        System.out.println();
         // Each block is 20x20 pixels, the comments are the block dimensions
         if (choice == 1) panelWidth = 300; //Smallest 15x15
         else if (choice == 2) panelWidth = 500; // Medium (Defult) 25x25
