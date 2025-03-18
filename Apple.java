@@ -31,13 +31,13 @@ public class Apple{
 		newY = random.nextInt(panelSize/20);
 		
 		for (Point point : pointsChecked){
-		    pointChecked = (point.x == newX || point.y == newY ) && pointChecked;
+		    pointChecked = (point.x == newX && point.y == newY ) && pointChecked;
 		}
 	    } while (pointChecked && pointsChecked.size() != 0);
 	
 
 	    for (Point part: body){
-		pointBad = ((newX == part.x) || (newY == part.y)) && pointBad;
+		pointBad = ((newX == part.x) && (newY == part.y)) && pointBad;
 	    }
 
 	    pointsChecked.add(new Point(newX, newY));
