@@ -98,7 +98,6 @@ public class Game {
 	Apple apple = new Apple(panel.getGraphics(), snake, panelWidth);
 
 	panel.addKeyListener(new MyKeyListener(snake));
-	System.out.println("add key listener");
         panel.setBackground(Color.BLACK);
 
         // Start the game loop
