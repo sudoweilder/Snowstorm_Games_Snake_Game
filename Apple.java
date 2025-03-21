@@ -26,20 +26,21 @@ public class Apple{
 	// This loop finds a the the snake is no on top of 
 	do{
 	    boolean pointChecked = true;
+
+	    // verifies that point hasn't been checked.
+	    Point newPoint;
 	    do {
 		newX = random.nextInt(panelSize/20);
 		newY = random.nextInt(panelSize/20);
-		
-		for (Point point : pointsChecked){
+		newPoint = new Point (newX, newY);
+		/*for (Point point : pointsChecked){
 		    pointChecked = (point.x == newX && point.y == newY ) && pointChecked;
-		}
-	    } while (pointChecked && pointsChecked.size() != 0);
+		}*/
+	    } while (pointChecked && pointsChecked.contains(newPoint) && pointsChecked.size() != 0);
 	
 
-	    for (Point part: body){
-		pointBad = ((newX == part.x) && (newY == part.y)) && pointBad;
-	    }
-
+	    
+	    pointBad = body.contains(newPoint);
 	    pointsChecked.add(new Point(newX, newY));
 	} while (pointBad);
 
